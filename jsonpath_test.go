@@ -55,6 +55,17 @@ func init() {
 	json.Unmarshal([]byte(data), &json_data)
 }
 
+func TestNoExists(t *testing.T) {
+	res, err := JsonPathLookup(json_data, "$.xxx")
+	if err != nil {
+		t.Error(err)
+		return
+	}
+	if res_v, ok := res.(float64); ok != true || res_v != 10.0 {
+		t.Errorf("expensive should be 10")
+	}
+}
+
 func Test_jsonpath_JsonPathLookup_1(t *testing.T) {
 	// key from root
 	res, _ := JsonPathLookup(json_data, "$.expensive")
@@ -1179,13 +1190,13 @@ func Test_jsonpath_rootnode_is_array_range(t *testing.T) {
 		t.Logf("idx: %v, v: %v", idx, v)
 	}
 	if len(ares) != 2 {
-		t.Fatal("len is not 2. got: %v", len(ares))
+		t.Fatalf("len is not 2. got: %v", len(ares))
 	}
 	if ares[0].(float64) != 12.34 {
-		t.Fatal("idx: 0, should be 12.34. got: %v", ares[0])
+		t.Fatalf("idx: 0, should be 12.34. got: %v", ares[0])
 	}
 	if ares[1].(float64) != 13.34 {
-		t.Fatal("idx: 0, should be 12.34. got: %v", ares[1])
+		t.Fatalf("idx: 0, should be 12.34. got: %v", ares[1])
 	}
 }
 
@@ -1232,7 +1243,7 @@ func Test_jsonpath_rootnode_is_nested_array_range(t *testing.T) {
 		t.Logf("idx: %v, v: %v", idx, v)
 	}
 	if len(ares) != 2 {
-		t.Fatal("len is not 2. got: %v", len(ares))
+		t.Fatalf("len is not 2. got: %v", len(ares))
 	}
 
 	//FIXME: `$[:1].[0].test` got wrong result
