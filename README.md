@@ -9,20 +9,22 @@ but also with some minor differences.
 
 this library is till bleeding edge, so use it at your own risk. :D
 
+> Fork from [https://github.com/oliveagle/jsonpath](https://github.com/oliveagle/jsonpath) , it seems to be no maintenance.
+
 **Golang Version Required**: 1.5+
 
 Get Started
 ------------
 
 ```bash
-go get github.com/oliveagle/jsonpath
+go get github.com/Nisus-Liu/jsonpath
 ```
 
 example code:
 
 ```go
 import (
-    "github.com/oliveagle/jsonpath"
+    "github.com/Nisus-Liu/jsonpath"
     "encoding/json"
 )
 
